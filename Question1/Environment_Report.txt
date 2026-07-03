@@ -1,0 +1,23 @@
+Question 1 - Linux Environment Verification
+
+Username:
+root
+
+Groups:
+uid=0(root) gid=0(root) groups=0(root)
+root
+
+Current Shell:
+/bin/bash
+
+Current Working Directory:
+/work
+
+Workspace Files:
+The workspace contained README.md and the five folders Question1, Question2, Question3, Question4, and Question5. The ls -la command displayed detailed permissions, ownership, size, and timestamps.
+
+Network Connectivity:
+The ping command to google.com transmitted 4 packets and received 4 packets with 0% packet loss. This confirmed that network connectivity was working.
+
+Brief Observations:
+I verified the current Linux user using whoami, id, and groups. I checked the shell and working directory using echo "$SHELL" and pwd. I listed the workspace contents using ls -la and verified network connectivity using ping.

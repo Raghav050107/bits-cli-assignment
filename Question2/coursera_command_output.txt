@@ -1,0 +1,57 @@
+Question 2 - Secure Project Workspace Setup
+
+Command: mkdir -p project_workspace
+
+Command: touch project_workspace/plan.txt project_workspace/notes.txt
+
+Command: vi project_workspace/plan.txt
+
+Command: vi project_workspace/notes.txt
+
+Command: cat project_workspace/plan.txt
+Project Plan
+
+1. Create a secure project workspace.
+2. Create project documentation files.
+3. Check the default file and directory permissions.
+4. Change the workspace directory permission using chmod 750.
+5. Verify ownership details using id and directory listing commands.
+6. Check the umask value used for default permissions.
+7. Confirm that the workspace protects project files from unauthorized users.
+
+Command: cat project_workspace/notes.txt
+Project Notes
+
+The project_workspace directory was created to store project files securely.
+The files plan.txt and notes.txt were created as sample project documentation files.
+
+The workspace permission was changed to 750:
+- Owner has read, write, and execute permission.
+- Group has read and execute permission.
+- Other users have no permission.
+
+This permission setting protects project data by preventing unauthorized users from accessing the directory.
+
+Command: ls -l project_workspace
+total 16
+-rw-r--r-- 1 root root 457 Jun 22 21:32 notes.txt
+-rw-r--r-- 1 root root 408 Jun 22 21:32 plan.txt
+
+Command: ls -ld project_workspace
+drwxr-xr-x 2 root root 4096 Jun 22 21:32 project_workspace
+
+Command: chmod 750 project_workspace
+
+Command: ls -ld project_workspace
+drwxr-x--- 2 root root 4096 Jun 22 21:32 project_workspace
+
+Command: id
+uid=0(root) gid=0(root) groups=0(root)
+
+Command: umask
+0022
+
+Command: find project_workspace -maxdepth 2 -ls
+  3966710      4 drwxr-x---   2 root     root         4096 Jun 22 21:32 project_workspace
+  3966738      4 -rw-r--r--   1 root     root          457 Jun 22 21:32 project_workspace/notes.txt
+  3966737      4 -rw-r--r--   1 root     root          408 Jun 22 21:32 project_workspace/plan.txt

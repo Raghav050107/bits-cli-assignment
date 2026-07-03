@@ -1,0 +1,19 @@
+Question 4 - File Access and I/O Investigation
+
+Open Files Identified:
+lsof -p $$ showed open files for the bash process, including the current directory, root directory, bash executable, shared libraries, pipes, and the command output file.
+
+File Descriptor Observations:
+/proc/$$/fd showed file descriptors 0, 1, 2, 10, and 11. Descriptor 0 pointed to /dev/null, descriptors 1 and 2 pointed to the command output file, and descriptors 10 and 11 pointed to pipes.
+
+Output Redirection Result:
+The command echo "Application log entry created successfully" > Question4/output.txt redirected standard output to output.txt. The cat command confirmed that the message was saved in the file.
+
+Error Redirection Result:
+The command ls missing_file.txt 2> Question4/error.txt redirected the error message to error.txt. The cat command confirmed that the missing file error was stored there.
+
+Resource Limits Observed:
+ulimit -a displayed system resource limits such as open files, stack size, pending signals, memory limits, and process limits. The open files limit was 1024.
+
+Technical Observations:
+Linux manages input and output through file descriptors. Standard input, standard output, and standard error are represented by file descriptors 0, 1, and 2. Redirection changes where output and error streams are written.

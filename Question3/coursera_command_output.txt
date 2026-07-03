@@ -1,0 +1,59 @@
+Question 3 - File System and Link Analysis
+
+Command: echo "This file is used to test hard links and symbolic links." > original.txt
+
+Command: ln original.txt hardlink.txt
+
+Command: ln -s original.txt symlink.txt
+
+Command: ls -li
+total 8
+3966740 -rw-r--r-- 2 root root 57 Jun 22 21:32 hardlink.txt
+3966740 -rw-r--r-- 2 root root 57 Jun 22 21:32 original.txt
+3966741 lrwxrwxrwx 1 root root 12 Jun 22 21:32 symlink.txt -> original.txt
+
+Command: stat original.txt
+  File: original.txt
+  Size: 57        	Blocks: 8          IO Block: 4096   regular file
+Device: 0,42	Inode: 3966740     Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-06-22 21:32:01.122929822 +0000
+Modify: 2026-06-22 21:32:01.122929822 +0000
+Change: 2026-06-22 21:32:01.123929818 +0000
+ Birth: 2026-06-22 21:32:01.122929822 +0000
+
+Command: stat hardlink.txt
+  File: hardlink.txt
+  Size: 57        	Blocks: 8          IO Block: 4096   regular file
+Device: 0,42	Inode: 3966740     Links: 2
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-06-22 21:32:01.122929822 +0000
+Modify: 2026-06-22 21:32:01.122929822 +0000
+Change: 2026-06-22 21:32:01.123929818 +0000
+ Birth: 2026-06-22 21:32:01.122929822 +0000
+
+Command: stat symlink.txt
+  File: symlink.txt -> original.txt
+  Size: 12        	Blocks: 0          IO Block: 4096   symbolic link
+Device: 0,42	Inode: 3966741     Links: 1
+Access: (0777/lrwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-06-22 21:32:01.125929810 +0000
+Modify: 2026-06-22 21:32:01.123929818 +0000
+Change: 2026-06-22 21:32:01.123929818 +0000
+ Birth: 2026-06-22 21:32:01.123929818 +0000
+
+Command: cat original.txt
+This file is used to test hard links and symbolic links.
+
+Command: rm original.txt
+
+Command: ls -li
+total 4
+3966740 -rw-r--r-- 1 root root 57 Jun 22 21:32 hardlink.txt
+3966741 lrwxrwxrwx 1 root root 12 Jun 22 21:32 symlink.txt -> original.txt
+
+Command: cat hardlink.txt
+This file is used to test hard links and symbolic links.
+
+Command: cat symlink.txt
+cat: symlink.txt: No such file or directory

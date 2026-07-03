@@ -1,0 +1,64 @@
+Question 5 - Storage Health Assessment and Documentation
+
+Command: lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+vda     253:0    0   20G  0 disk 
+├─vda1  253:1    0   19G  0 part 
+├─vda15 253:15   0   99M  0 part 
+└─vda16 259:0    0  923M  0 part 
+vdb     253:16   0  100G  0 disk 
+└─vdb1  253:17   0  100G  0 part /etc/hosts
+                                 /etc/hostname
+                                 /etc/resolv.conf
+vdc     253:32   0 18.7M  1 disk 
+
+Command: df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          98G  9.7G   84G  11% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/vdb1        98G  9.7G   84G  11% /etc/hosts
+tmpfs           980M     0  980M   0% /proc/acpi
+tmpfs           980M     0  980M   0% /proc/scsi
+tmpfs           980M     0  980M   0% /sys/firmware
+
+Command: df -i
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+overlay        6553600 313528 6240072    5% /
+tmpfs           250769     16  250753    1% /dev
+shm             250769      1  250768    1% /dev/shm
+/dev/vdb1      6553600 313528 6240072    5% /etc/hosts
+tmpfs           250769      1  250768    1% /proc/acpi
+tmpfs           250769      1  250768    1% /proc/scsi
+tmpfs           250769      1  250768    1% /sys/firmware
+
+Command: mount | head -20
+overlay on / type overlay (rw,relatime,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/562/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/384/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/383/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/382/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/381/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/563/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/563/work,nouserxattr)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev type tmpfs (rw,nosuid,size=65536k,mode=755,inode64)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=666)
+sysfs on /sys type sysfs (ro,nosuid,nodev,noexec,relatime)
+cgroup on /sys/fs/cgroup type cgroup2 (ro,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+shm on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k,inode64)
+/dev/vdb1 on /etc/resolv.conf type ext4 (rw,relatime)
+/dev/vdb1 on /etc/hostname type ext4 (rw,relatime)
+/dev/vdb1 on /etc/hosts type ext4 (rw,relatime)
+proc on /proc/bus type proc (ro,nosuid,nodev,noexec,relatime)
+proc on /proc/fs type proc (ro,nosuid,nodev,noexec,relatime)
+proc on /proc/irq type proc (ro,nosuid,nodev,noexec,relatime)
+proc on /proc/sys type proc (ro,nosuid,nodev,noexec,relatime)
+proc on /proc/sysrq-trigger type proc (ro,nosuid,nodev,noexec,relatime)
+tmpfs on /proc/acpi type tmpfs (ro,relatime,inode64)
+tmpfs on /proc/interrupts type tmpfs (rw,nosuid,size=65536k,mode=755,inode64)
+tmpfs on /proc/kcore type tmpfs (rw,nosuid,size=65536k,mode=755,inode64)
+tmpfs on /proc/keys type tmpfs (rw,nosuid,size=65536k,mode=755,inode64)
+
+Command: command -v smartctl
+/usr/sbin/smartctl
+
+Command: smartctl -H /dev/sda
+smartctl 7.4 2023-08-01 r5530 [aarch64-linux-6.8.0-100-generic] (local build)
+Copyright (C) 2002-23, Bruce Allen, Christian Franke, www.smartmontools.org
+
+Smartctl open device: /dev/sda failed: No such device

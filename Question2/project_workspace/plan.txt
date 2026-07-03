@@ -1,0 +1,9 @@
+Project Plan
+
+1. Create a secure project workspace.
+2. Create project documentation files.
+3. Check the default file and directory permissions.
+4. Change the workspace directory permission using chmod 750.
+5. Verify ownership details using id and directory listing commands.
+6. Check the umask value used for default permissions.
+7. Confirm that the workspace protects project files from unauthorized users.

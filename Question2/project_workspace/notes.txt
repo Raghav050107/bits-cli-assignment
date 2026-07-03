@@ -1,0 +1,11 @@
+Project Notes
+
+The project_workspace directory was created to store project files securely.
+The files plan.txt and notes.txt were created as sample project documentation files.
+
+The workspace permission was changed to 750:
+- Owner has read, write, and execute permission.
+- Group has read and execute permission.
+- Other users have no permission.
+
+This permission setting protects project data by preventing unauthorized users from accessing the directory.

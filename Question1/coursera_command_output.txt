@@ -1,0 +1,39 @@
+Question 1 - Linux Environment Verification
+
+Command: whoami
+root
+
+Command: id
+uid=0(root) gid=0(root) groups=0(root)
+
+Command: groups
+root
+
+Command: echo "$SHELL"
+/bin/bash
+
+Command: pwd
+/work
+
+Command: ls -la
+total 36
+drwxr-xr-x 8  501 root 4096 Jun 22 21:31 .
+drwxr-xr-x 1 root root 4096 Jun 22 21:26 ..
+drwxr-xr-x 7  501 root 4096 Jun 22 21:23 .git
+drwxr-xr-x 3  501 root 4096 Jun 22 21:25 Question1
+drwxr-xr-x 3  501 root 4096 Jun 22 21:26 Question2
+drwxr-xr-x 4  501 root 4096 Jun 22 21:26 Question3
+drwxr-xr-x 3  501 root 4096 Jun 22 21:26 Question4
+drwxr-xr-x 3  501 root 4096 Jun 22 21:26 Question5
+-rw-r--r-- 1  501 root 1517 Jun 22 21:23 README.md
+
+Command: ping -c 4 google.com
+PING google.com (142.251.220.110) 56(84) bytes of data.
+64 bytes from 142.251.220.110: icmp_seq=1 ttl=63 time=0.072 ms
+64 bytes from 142.251.220.110: icmp_seq=2 ttl=63 time=0.442 ms
+64 bytes from 142.251.220.110: icmp_seq=3 ttl=63 time=0.657 ms
+64 bytes from 142.251.220.110: icmp_seq=4 ttl=63 time=0.569 ms
+
+--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3061ms
+rtt min/avg/max/mdev = 0.072/0.435/0.657/0.223 ms

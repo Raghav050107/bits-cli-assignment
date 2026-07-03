@@ -1,0 +1,19 @@
+Question 5 - Storage Health Assessment and Documentation
+
+Available Storage Devices:
+The lsblk command showed block devices vda, vdb, and vdc. Device vda had partitions vda1, vda15, and vda16. Device vdb had partition vdb1.
+
+Mounted File Systems:
+df -h and mount showed that the overlay filesystem was mounted on /. The /dev/vdb1 device was mounted for /etc/hosts, /etc/hostname, and /etc/resolv.conf. Other mounted filesystems included tmpfs, proc, devpts, sysfs, cgroup, mqueue, and shm.
+
+Disk Usage Statistics:
+The overlay filesystem had a size of 98G, used 9.7G, and had 84G available. The usage was 11%, so enough disk space was available.
+
+Inode Utilization:
+df -i showed that the overlay filesystem had 6553600 inodes, 313528 used, and 6240072 free. Inode usage was 5%, so inode availability was healthy.
+
+Storage Health Observations:
+smartctl was installed at /usr/sbin/smartctl. The command smartctl -H /dev/sda failed because /dev/sda did not exist in this environment. Because of this, SMART health could not be collected for /dev/sda. Disk usage and inode usage were still checked using df and lsblk.
+
+Recommendations:
+Disk usage should be monitored regularly using df -h. Inode usage should be checked using df -i, especially on systems that create many small files. Old temporary files and logs should be removed when storage usage increases. SMART checks should be run on the correct physical disk device when available.

@@ -1,0 +1,24 @@
+Question 3 - File System and Link Analysis
+
+Files Created:
+original.txt
+hardlink.txt
+symlink.txt
+
+Inode Numbers:
+The original file and hardlink.txt used inode 3966740. The symbolic link symlink.txt used inode 3966741.
+
+Metadata Collected:
+The stat command showed that original.txt and hardlink.txt were regular files with the same inode and link count 2 before deletion. The symbolic link had its own inode and pointed to original.txt.
+
+Hard Link Comparison:
+A hard link is another filename for the same inode. After deleting original.txt, hardlink.txt still displayed the file content correctly.
+
+Symbolic Link Comparison:
+A symbolic link stores a path to another file. After deleting original.txt, symlink.txt became broken and cat symlink.txt returned an error.
+
+Conclusion:
+Hard links remain usable after the original filename is removed because the inode still exists through the hard link. Symbolic links depend on the target path, so they fail when the target file is deleted.
+
+Final File Status:
+The final link_lab folder contains hardlink.txt and symlink.txt. The symlink is intentionally broken because original.txt was deleted during the experiment. This broken symlink is kept as evidence for the required link behavior analysis.
